@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="user-service-0.0.1-SNAPSHOT-plain">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/user-service/build/libs/user-service-0.0.1-SNAPSHOT-plain.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

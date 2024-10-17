@@ -1,0 +1,94 @@
+services:
+  user-service:
+    build: ./user-service
+    container_name: user-service
+    environment:
+      DATABASE_URL: jdbc:mysql://db:3306/ecommerce
+      DATABASE_USERNAME: user
+      DATABASE_PASSWORD: user
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+    networks:
+      - ecommerce
+  product-catalog-service:
+    build: ./product-catalog-service
+    container_name: product-catalog-service
+    environment:
+      DATABASE_URL: jdbc:mysql://db:3306/ecommerce
+      DATABASE_USERNAME: user
+      DATABASE_PASSWORD: user
+    ports:
+      - '8081:8081'
+    depends_on:
+      - db
+    networks:
+      - ecommerce
+  shopping-cart-service:
+    build: ./shopping-cart-service
+    container_name: shopping-cart-service
+    environment:
+      DATABASE_URL: jdbc:mysql://db:3306/ecommerce
+      DATABASE_USERNAME: user
+      DATABASE_PASSWORD: user
+    ports:
+      - '8082:8082'
+    depends_on:
+      - db
+    networks:
+      - ecommerce
+  order-service:
+    build: ./order-service
+    container_name: order-service
+    environment:
+      DATABASE_URL: jdbc:mysql://db:3306/ecommerce
+      DATABASE_USERNAME: user
+      DATABASE_PASSWORD: user
+    ports:
+      - '8083:8083'
+    depends_on:
+      - db
+    networks:
+      - ecommerce
+  payment-service:
+    build: ./payment-service
+    container_name: payment-service
+    environment:
+      DATABASE_URL: jdbc:mysql://db:3306/ecommerce
+      DATABASE_USERNAME: user
+      DATABASE_PASSWORD: user
+    ports:
+      - '8084:8084'
+    depends_on:
+      - db
+    networks:
+      - ecommerce
+  notification-service:
+    build: ./notification-service
+    container_name: notification-service
+    environment:
+      DATABASE_URL: jdbc:mysql://db:3306/ecommerce
+      DATABASE_USERNAME: user
+      DATABASE_PASSWORD: user
+    ports:
+      - '8085:8085'
+    depends_on:
+      - db
+    networks:
+      - ecommerce
+  db:
+    image: 'mysql:latest'
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ecommerce
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+    ports:
+      - '3306:3306'
+    networks:
+      - ecommerce
+networks:
+  ecommerce:
+    driver: bridge

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: notification-service
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: ${DATABASE_URL:jdbc:mysql://localhost:3306/ecommerce}
+    username: ${DATABASE_USERNAME:user}
+    password: ${DATABASE_PASSWORD:user}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+server:
+  port: 8085
